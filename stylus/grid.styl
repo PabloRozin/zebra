@@ -7,28 +7,43 @@
 	margin 0 auto
 	margin-right auto
 	margin-left auto
-	padding-left margin-base
-	padding-right margin-base
+	padding-left 15px
+	padding-right 15px
 
 .row
 	margin-left -margin-base
 	margin-right -margin-base
 
-	&before
-	&after
+	&:before
+	&:after
 		content " "
 		display table
 
-	&after
+	&:after
 		clear both
+
+media-row(breakpoint)
+
+	if lookup('row-margin-' + breakpoint) is not null
+
+		for row-margin in lookup('row-margin-' + breakpoint)
+
+			.row-margin-{breakpoint}-{row-margin}
+				margin-left -(row-margin)
+				margin-right -(row-margin)
+
+				[class^="col-"]
+				[class*=" col-"]
+					padding-left row-margin
+					padding-right row-margin
 
 [class^="col-"]
 [class*=" col-"]
 	float left
 	position relative
 	min-height 1px
-	padding-left 15px
-	padding-right 15px
+	padding-left margin-base
+	padding-right margin-base
 	width 100%
 
 for breakpoint in grid-breakpoints
@@ -39,8 +54,13 @@ for breakpoint in grid-breakpoints
 
 		for col in grid-cols
 
-			.col-{col}-{breakpoint}
+			.col-{breakpoint}-{col}
 				
-				width (100 / col) %
+				width (100 / (grid-max-cols / col)) %
 
-		grid-heading(breakpoint)
+		media-heading(breakpoint)
+
+		media-row(breakpoint)
+
+		*
+			media-text(breakpoint)

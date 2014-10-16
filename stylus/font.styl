@@ -37,7 +37,7 @@ for heading in (h1 h2 h3 h4 h5 h6)
 get-variable(text, var)
     {text + var}
 
-grid-heading(breakpoint) 
+media-heading(breakpoint) 
 
     for heading in (h1 h2 h3 h4 h5 h6)
 
@@ -50,6 +50,17 @@ grid-heading(breakpoint)
 
                 if lookup('line-height-' + heading + '-' + breakpoint) is not null
                     line-height lookup('line-height-' + heading + '-' + breakpoint)
+
+media-text(breakpoint)
+
+    for size in (tiny small base large huge)
+
+        if lookup('font-size-' + size + '-' + breakpoint) is not null
+
+            .f-size-{breakpoint}-{size}
+
+                if lookup('font-size-' + size + '-' + breakpoint) is not null
+                    font-size lookup('font-size-' + size + '-' + breakpoint)
 
 // ==
 // Text, utilities and others
@@ -96,7 +107,7 @@ grid-heading(breakpoint)
 
     p
     .paragraph
-        margin-bottom margin-base
+        margin-bottom ((margin-base - line-height-over-font-size) / 2)
 
     abbr
         &[title]

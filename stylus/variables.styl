@@ -22,6 +22,7 @@ brand-danger = #d9534f
 grid-container-max-width = 1200px // Includes padding
 
 grid-breakpoints = 300 600 900 1200 1500
+grid-max-cols = 12
 grid-cols = 1 2 3 4 5 6 7 8 9 10 11 12
 
 // ==
@@ -35,22 +36,32 @@ font-family-monospace = Menlo, Monaco, Consolas, "Courier New", monospace
 font-family-base = font-family-serif
 font-weight-base = normal
 
+// line-height is font-size + 4
 font-size-huge = 23px
 font-size-large = 18px
 font-size-base = 16px
 font-size-small = 14px
 font-size-tiny = 12px
 
+line-height-over-font-size = 4px
+
+// change text font-size in each grid breakpoint
+font-size-large-300 = 15px
+font-size-base-900 = 23px
+font-size-huge-1500 = 37px
+
 // if line-height aren't defined, default's heading font-size + 6
 font-size-h1 = 50px
-font-size-h1-1500 = 150px
 font-size-h2 = 37px
 font-size-h3 = 28px
 font-size-h4 = 23px
-font-size-h4-300 = 23px
-line-height-h4-300 = 23px
 font-size-h5 = 16px
 font-size-h6 = 12px
+
+// change heading font-size and/or line-height in each grid breakpoint
+font-size-h1-1500 = 150px
+font-size-h4-300 = 23px
+line-height-h4-300 = 23px
 
 headings-font-family = font-family-sans-serif
 headings-font-weight = 500
@@ -63,4 +74,11 @@ link-color = brand-primary
 link-hover-color = darken(link-color, 15%)
 link-decoration = underline
 
-margin-base = 15px
+// ==
+// Margins
+// ==
+
+margin-base = 30px
+
+// change colum margins in each grid breakpoint
+row-margin-300 = 30px 45px 60px
