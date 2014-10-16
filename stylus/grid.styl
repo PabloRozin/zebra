@@ -1,0 +1,46 @@
+// ==
+// Grid sistem
+// ==
+
+.container
+	max-width grid-container-max-width
+	margin 0 auto
+	margin-right auto
+	margin-left auto
+	padding-left margin-base
+	padding-right margin-base
+
+.row
+	margin-left -margin-base
+	margin-right -margin-base
+
+	&before
+	&after
+		content " "
+		display table
+
+	&after
+		clear both
+
+[class^="col-"]
+[class*=" col-"]
+	float left
+	position relative
+	min-height 1px
+	padding-left 15px
+	padding-right 15px
+	width 100%
+
+for breakpoint in grid-breakpoints
+	
+	media-condition = '(min-width: %spx)' % breakpoint
+
+	@media media-condition
+
+		for col in grid-cols
+
+			.col-{col}-{breakpoint}
+				
+				width (100 / col) %
+
+		grid-heading(breakpoint)

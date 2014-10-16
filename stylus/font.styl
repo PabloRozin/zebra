@@ -1,0 +1,157 @@
+// ==
+// Body
+// ==
+body
+    color text-color
+    font-size font-size-base
+    line-height font-size-base + 3
+    font-family font-family-base
+    font-weight font-weight-base
+
+
+// ==
+// Headings
+// ==
+
+h1
+h2
+h3
+h4
+h5
+h6
+.h1
+.h2
+.h3
+.h4
+.h5
+.h6 
+    font-family headings-font-family
+    font-weight headings-font-weight
+    color headings-color
+
+for heading in (h1 h2 h3 h4 h5 h6)
+    .h{i}
+        font-size lookup('font-size-' + heading)
+        line-height (lookup('font-size-' + heading) + 6)
+
+get-variable(text, var)
+    {text + var}
+
+grid-heading(breakpoint) 
+
+    for heading in (h1 h2 h3 h4 h5 h6)
+
+        if lookup('font-size-' + heading + '-' + breakpoint) is not null or lookup('line-height-' + heading + '-' + breakpoint) is not null
+
+            .{heading}-{breakpoint} 
+
+                if lookup('font-size-' + heading + '-' + breakpoint) is not null
+                    font-size lookup('font-size-' + heading + '-' + breakpoint)
+
+                if lookup('line-height-' + heading + '-' + breakpoint) is not null
+                    line-height lookup('line-height-' + heading + '-' + breakpoint)
+
+// ==
+// Text, utilities and others
+// ==
+
+*
+
+    strong
+    .bold
+        font-size inherit
+        line-height inherit
+        color inherit
+        font-weight bold
+
+    em
+    .italic
+        font-size inherit
+        line-height inherit
+        color inherit
+        font-style italic
+    
+    u
+    .underline
+        font-size inherit
+        line-height inherit
+        color inherit
+        text-decoration underline
+
+    a
+        font-size inherit
+        line-height inherit
+        color link-color
+        text-decoration link-decoration
+
+        &:hover
+            color link-hover-color
+
+    small
+    .small 
+        font-size 85%
+        font-weight normal
+        line-height 1
+        color @headings-small-color
+
+    p
+    .paragraph
+        margin-bottom margin-base
+
+    abbr
+        &[title]
+        &[data-original-title]
+            cursor help
+            border-bottom 1px dotted text-color
+
+    .text-left
+        text-align left
+
+    .text-center
+        text-align center
+
+    .text-right
+        text-align right
+        
+    .text-justify
+        text-align justify
+
+    .text-nowrap
+        white-space nowrap
+
+    .m-top-0
+        margin-top 0
+
+    .m-right-0
+        margin-right 0
+
+    .m-bottom-0
+        margin-bottom 0
+
+    .m-left-0
+        margin-left 0
+
+    .text-large
+        font-size font-size-large
+        line-height font-size-large + 3
+
+    .text-huge
+        font-size font-size-huge
+        line-height font-size-huge + 3
+
+    .text-small
+        font-size font-size-small
+        line-height font-size-small + 3
+
+    .text-tiny
+        font-size font-size-tiny
+        line-height font-size-tiny + 3
+
+    .text-lowercase
+        text-transform lowercase
+
+    .text-uppercase
+        text-transform uppercase
+
+    .text-capitalize
+        text-transform capitalize
