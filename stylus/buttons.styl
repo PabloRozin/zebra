@@ -1,2 +1,58 @@
 .-btn
-	display block
+	display inline-block
+	margin-bottom 0
+	font-weight btn-font-weight
+	text-align center
+	vertical-align middle
+	touch-action manipulation
+	cursor pointer
+	border solid btn-base-border-size transparent
+	white-space nowrap
+	user-select none
+	text-decoration none
+	text-transform btn-text-transform
+	font-size btn-base-font-size
+	line-height btn-base-font-size
+	padding (((btn-base-height - btn-base-font-size) / 2) - (btn-base-border-size * 2)) (ceil(btn-base-height / 2))
+	color btn-default-color
+	background-color btn-default-bg
+	border-color btn-default-border
+	border-radius border-radius-base
+
+	&:hover
+	&:focus
+	&:active
+		color btn-default-hover-color
+		background-color btn-default-hover-bg
+		border-color btn-default-hover-border
+
+	&.-small
+		font-size btn-small-font-size
+		line-height btn-small-font-size
+		padding (((btn-small-height - btn-small-font-size) / 2) - (btn-small-border-size * 2)) (ceil(btn-small-height / 2))
+		border solid btn-small-border-size transparent
+
+	&.-large
+		font-size btn-large-font-size
+		line-height btn-large-font-size
+		padding (((btn-large-height - btn-large-font-size) / 2) - (btn-large-border-size * 2)) (ceil(btn-large-height / 2))
+		border solid btn-large-border-size transparent
+
+	for color in (primary success info warning danger)
+		
+		&.-{color}
+			color lookup('btn-' + color + '-color')
+			background lookup('btn-' + color + '-bg')
+			border lookup('btn-' + color + '-border')
+
+			&:hover
+			&:focus
+			&:active
+				color lookup('btn-' + color + '-hover-color')
+				background lookup('btn-' + color + '-hover-bg')
+				border lookup('btn-' + color + '-hover-border')
+
+	&[disabled]
+		cursor not-allowed
+		pointer-events none
+		opacity .65

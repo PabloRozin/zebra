@@ -74,9 +74,23 @@ abbr[title],abbr[data-original-title]{cursor:help;border-bottom:1px dotted #333}
 .-t_lowercase{-t_transform:lowercase}
 .-t_uppercase{-t_transform:uppercase}
 .-t_capitalize{-t_transform:capitalize}
-.-btn{display:block}
+.-btn{display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;touch-action:manipulation;cursor:pointer;border:solid 0 transparent;white-space:nowrap;user-select:none;text-decoration:none;text-transform:uppercase;font-size:16px;line-height:16px;padding:14.5px 23px;color:#333;background-color:#fff;border-color:#ccc;border-radius:0;}
+.-btn:hover,.-btn:focus,.-btn:active{color:#fff;background-color:#000;border-color:#ccc}
+.-btn.-small{font-size:14px;line-height:14px;padding:8px 15px;border:solid 0 transparent}
+.-btn.-large{font-size:21px;line-height:21px;padding:19.5px 30px;border:solid 0 transparent}
+.-btn.-primary{color:#fff;background:#428bca;border:#3885c7;}
+.-btn.-primary:hover,.-btn.-primary:focus,.-btn.-primary:active{color:#fff;background:#428bca;border:#3885c7}
+.-btn.-success{color:#fff;background:#5cb85c;border:#52b452;}
+.-btn.-success:hover,.-btn.-success:focus,.-btn.-success:active{color:#fff;background:#5cb85c;border:#52b452}
+.-btn.-info{color:#fff;background:#5bc0de;border:#4ebbdb;}
+.-btn.-info:hover,.-btn.-info:focus,.-btn.-info:active{color:#fff;background:#5bc0de;border:#4ebbdb}
+.-btn.-warning{color:#fff;background:#f0ad4e;border:#efa63f;}
+.-btn.-warning:hover,.-btn.-warning:focus,.-btn.-warning:active{color:#fff;background:#f0ad4e;border:#efa63f}
+.-btn.-danger{color:#fff;background:#d9534f;border:#d64743;}
+.-btn.-danger:hover,.-btn.-danger:focus,.-btn.-danger:active{color:#fff;background:#d9534f;border:#d64743}
+.-btn[disabled]{cursor:not-allowed;pointer-events:none;opacity:.65}
 .-cont{max-width:1200px;margin:0 auto;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
-.-row{margin-left:-margin-base;margin-right:-margin-base;}
+.-row{margin-left:-30px;margin-right:-30px;}
 .-row:before,.-row:after{content:" ";display:table}
 .-row:after{clear:both}
 [class^="-col-"],[class*=" -col-"]{float:left;position:relative;min-height:1px;padding-left:30px;padding-right:30px;width:100%}
