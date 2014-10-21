@@ -1,4 +1,38 @@
 // ==
+// General base
+// ==
+
+border-radius-base = 0
+margin-base = 30px
+font-margin-rest = 10px
+
+// change margin-base in each grid breakpoint
+margin-base-900 = 60px
+
+// change font-margin-rest in each grid breakpoint
+font-margin-rest-900 = 10px
+
+// ==
+// Grid sistem
+// ==
+
+grid-container-max-width = 1200px // Includes padding
+
+// need to put de prev-breakpoint for each breakpoint
+grid-breakpoints = 300 600 900 1200 1500
+prev-breakpoint-300 = 0
+prev-breakpoint-600 = 300
+prev-breakpoint-900 = 600
+prev-breakpoint-1200 = 900
+prev-breakpoint-1500 = 1200
+
+grid-max-cols = 12
+grid-cols = 1 2 3 4 5 6 7 8 9 10 11 12
+
+// change colum margins in each grid breakpoint
+row-margin-300 = 30px 45px 60px
+
+// ==
 // Colors
 // ==
 
@@ -16,16 +50,6 @@ brand-warning = #f0ad4e
 brand-danger = #d9534f
 
 // ==
-// Grid sistem
-// ==
-
-grid-container-max-width = 1200px // Includes padding
-
-grid-breakpoints = 300 600 900 1200 1500
-grid-max-cols = 12
-grid-cols = 1 2 3 4 5 6 7 8 9 10 11 12
-
-// ==
 // Font
 // ==
 
@@ -41,7 +65,7 @@ font-size-huge = 23px
 font-size-large = 18px
 font-size-base = 16px
 font-size-small = 14px
-font-size-tiny = 12px
+font-size-tiny = 12px 
 
 line-height-over-font-size = 4px
 
@@ -57,6 +81,8 @@ font-size-h3 = 28px
 font-size-h4 = 23px
 font-size-h5 = 16px
 font-size-h6 = 12px
+
+heading-line-height-over-font-size = 6
 
 // change heading font-size and/or line-height in each grid breakpoint
 font-size-h1-1500 = 150px
@@ -75,10 +101,33 @@ link-hover-color = darken(link-color, 15%)
 link-decoration = underline
 
 // ==
-// Margins
+// Buttons
 // ==
 
-margin-base = 30px
+btn-font-weight = normal
 
-// change colum margins in each grid breakpoint
-row-margin-300 = 30px 45px 60px
+btn-default-color = #333
+btn-default-bg = #fff
+btn-default-border = #ccc
+
+btn-primary-color = #fff
+btn-primary-bg = brand-primary
+btn-primary-border = darken(btn-primary-bg, 5%)
+
+btn-success-color = #fff
+btn-success-bg = brand-success
+btn-success-border = darken(btn-success-bg, 5%)
+
+btn-info-color = #fff
+btn-info-bg = brand-info
+btn-info-border = arken(btn-info-bg, 5%)
+
+btn-warning-color = #fff
+btn-warning-bg = brand-warning
+btn-warning-border = darken(btn-warning-bg, 5%)
+
+btn-danger-color = #fff
+btn-danger-bg = brand-danger
+btn-danger-border = darken(btn-danger-bg, 5%)
+
+btn-link-disabled-color = gray-light

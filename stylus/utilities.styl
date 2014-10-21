@@ -1,4 +1,4 @@
-.clearfix
+.-clear
 	
 	&:before
 	&:after
@@ -7,3 +7,50 @@
 	
 	&:after
 		clear both
+
+.-m_top_0
+	margin-top 0
+
+.-m_right_0
+	margin-right 0
+
+.-m_bottom_0
+	margin-bottom 0
+
+.-m_left_0
+	margin-left 0
+
+media-margin-base(breakpoint)
+
+	if lookup('margin-base-' + breakpoint) is not null
+
+		.-row
+			margin-left -(lookup('margin-base-' + breakpoint) / 2)
+			margin-right -(lookup('margin-base-' + breakpoint) / 2)
+
+		[class^="-col-"]
+		[class*=" -col-"]
+			padding-left (lookup('margin-base-' + breakpoint) / 2)
+			padding-right (lookup('margin-base-' + breakpoint) / 2)
+
+		if get_from_prev_breakpoint('font-margin-rest', breakpoint) is not null
+
+			p
+			.-p
+				margin-bottom (((lookup('margin-base-' + breakpoint) - line-height-over-font-size) / 2) - get_from_prev_breakpoint('font-margin-rest', breakpoint))
+
+		else
+
+			p
+			.-p
+				margin-bottom ((lookup('margin-base-' + breakpoint) - line-height-over-font-size) / 2)
+
+			for heading in (h1 h2 h3 h4 h5 h6)
+				.-{heading}
+					if get_from_prev_breakpoint('line-height-' + heading, breakpoint) is not null
+						if get_from_prev_breakpoint('font-size-' + heading, breakpoint) is not null
+							margin-bottom ((lookup('margin-base-' + breakpoint) / 2) - ((get_from_prev_breakpoint('line-height-' + heading, breakpoint) - get_from_prev_breakpoint('font-size-' + heading, breakpoint)) / 2) - font-margin-rest)
+						else
+							margin-bottom ((lookup('margin-base-' + breakpoint) / 2) - ((get_from_prev_breakpoint('line-height-' + heading, breakpoint) - lookup('font-size-' + heading)) / 2) - font-margin-rest)
+					else
+						margin-bottom ((lookup('margin-base-' + breakpoint) / 2) - (heading-line-height-over-font-size / 2) - font-margin-rest)

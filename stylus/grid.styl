@@ -2,7 +2,7 @@
 // Grid sistem
 // ==
 
-.container
+.-cont
 	max-width grid-container-max-width
 	margin 0 auto
 	margin-right auto
@@ -10,7 +10,7 @@
 	padding-left 15px
 	padding-right 15px
 
-.row
+.-row
 	margin-left -margin-base
 	margin-right -margin-base
 
@@ -28,23 +28,37 @@ media-row(breakpoint)
 
 		for row-margin in lookup('row-margin-' + breakpoint)
 
-			.row-margin-{breakpoint}-{row-margin}
+			.-row_m-{breakpoint}-{row-margin}
 				margin-left -(row-margin)
 				margin-right -(row-margin)
 
-				[class^="col-"]
-				[class*=" col-"]
+				[class^="-col-"]
+				[class*=" -col-"]
 					padding-left row-margin
 					padding-right row-margin
 
-[class^="col-"]
-[class*=" col-"]
+[class^="-col-"]
+[class*=" -col-"]
 	float left
 	position relative
 	min-height 1px
 	padding-left margin-base
 	padding-right margin-base
 	width 100%
+
+get_from_prev_breakpoint(var, breakpoint)
+	prev-breakpoint = lookup('prev-breakpoint-' + breakpoint)
+	if lookup(var + '-' + breakpoint) is not null
+		lookup(var + '-' + breakpoint)
+	else if lookup(var + '-' + prev-breakpoint) == 0
+		if lookup(var) is not null
+			lookup(var)
+		else
+			null
+	else if lookup(var + '-' +prev-breakpoint) is not null
+		lookup(var + '-' +prev-breakpoint)
+	else
+		get_from_prev_breakpoint(var, prev-breakpoint)
 
 for breakpoint in grid-breakpoints
 	
@@ -54,13 +68,12 @@ for breakpoint in grid-breakpoints
 
 		for col in grid-cols
 
-			.col-{breakpoint}-{col}
+			.-col-{breakpoint}-{col}
 				
 				width (100 / (grid-max-cols / col)) %
 
-		media-heading(breakpoint)
+		media-font(breakpoint)
+
+		media-margin-base(breakpoint)
 
 		media-row(breakpoint)
-
-		*
-			media-text(breakpoint)

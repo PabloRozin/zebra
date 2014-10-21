@@ -4,7 +4,7 @@
 body
     color text-color
     font-size font-size-base
-    line-height font-size-base + 3
+    line-height font-size-base + line-height-over-font-size
     font-family font-family-base
     font-weight font-weight-base
 
@@ -19,150 +19,138 @@ h3
 h4
 h5
 h6
-.h1
-.h2
-.h3
-.h4
-.h5
-.h6 
+.-h1
+.-h2
+.-h3
+.-h4
+.-h5
+.-h6 
     font-family headings-font-family
     font-weight headings-font-weight
     color headings-color
 
 for heading in (h1 h2 h3 h4 h5 h6)
-    .h{i}
+    .-{heading}
         font-size lookup('font-size-' + heading)
-        line-height (lookup('font-size-' + heading) + 6)
+        if lookup('line-height-' + heading) is not null
+            line-height lookup('line-height-' + heading)
+        else
+            line-height (lookup('font-size-' + heading) + heading-line-height-over-font-size)
+        margin-bottom ((margin-base / 2) - (heading-line-height-over-font-size / 2) - font-margin-rest)
 
-get-variable(text, var)
-    {text + var}
-
-media-heading(breakpoint) 
+media-font(breakpoint) 
 
     for heading in (h1 h2 h3 h4 h5 h6)
 
         if lookup('font-size-' + heading + '-' + breakpoint) is not null or lookup('line-height-' + heading + '-' + breakpoint) is not null
 
-            .{heading}-{breakpoint} 
+            .-{heading}-{breakpoint} 
 
                 if lookup('font-size-' + heading + '-' + breakpoint) is not null
                     font-size lookup('font-size-' + heading + '-' + breakpoint)
 
                 if lookup('line-height-' + heading + '-' + breakpoint) is not null
                     line-height lookup('line-height-' + heading + '-' + breakpoint)
-
-media-text(breakpoint)
+                else if lookup('font-size-' + heading + '-' + breakpoint) is not null
+                    line-height (lookup('font-size-' + heading + '-' + breakpoint) + heading-line-height-over-font-size)
 
     for size in (tiny small base large huge)
 
         if lookup('font-size-' + size + '-' + breakpoint) is not null
 
-            .f-size-{breakpoint}-{size}
-
+            body
+                
                 if lookup('font-size-' + size + '-' + breakpoint) is not null
                     font-size lookup('font-size-' + size + '-' + breakpoint)
+                    line-height (lookup('font-size-' + size + '-' + breakpoint) +  line-height-over-font-size)
 
 // ==
 // Text, utilities and others
 // ==
 
-*
+strong
+.-b
+    font-size inherit
+    line-height inherit
+    color inherit
+    font-weight bold
 
-    strong
-    .bold
-        font-size inherit
-        line-height inherit
-        color inherit
-        font-weight bold
+em
+.-i
+    font-size inherit
+    line-height inherit
+    color inherit
+    font-style italic
 
-    em
-    .italic
-        font-size inherit
-        line-height inherit
-        color inherit
-        font-style italic
+u
+.-u
+    font-size inherit
+    line-height inherit
+    color inherit
+    text-decoration underline
+
+a
+    font-size inherit
+    line-height inherit
+    color link-color
+    text-decoration link-decoration
+
+    &:hover
+        color link-hover-color
+
+small
+.-s
+    font-size 85%
+    font-weight normal
+    line-height 1
+    color @headings-small-color
+
+p
+.-p
+    margin-bottom (((margin-base - line-height-over-font-size) / 2) - font-margin-rest)
+
+abbr
+    &[title]
+    &[data-original-title]
+        cursor help
+        border-bottom 1px dotted text-color
+
+.-t_left
+    text-align left
+
+.-t_center
+    text-align center
+
+.-t_right
+    text-align right
     
-    u
-    .underline
-        font-size inherit
-        line-height inherit
-        color inherit
-        text-decoration underline
+.-t_justify
+    text-align justify
 
-    a
-        font-size inherit
-        line-height inherit
-        color link-color
-        text-decoration link-decoration
+.-t_nowrap
+    white-space nowrap
 
-        &:hover
-            color link-hover-color
+.-t_large
+    font-size font-size-large
+    line-height font-size-large + 3
 
-    small
-    .small 
-        font-size 85%
-        font-weight normal
-        line-height 1
-        color @headings-small-color
+.-t_huge
+    font-size font-size-huge
+    line-height font-size-huge + 3
 
-    p
-    .paragraph
-        margin-bottom ((margin-base - line-height-over-font-size) / 2)
+.-t_small
+    font-size font-size-small
+    line-height font-size-small + 3
 
-    abbr
-        &[title]
-        &[data-original-title]
-            cursor help
-            border-bottom 1px dotted text-color
+.-t_tiny
+    font-size font-size-tiny
+    line-height font-size-tiny + 3
 
-    .text-left
-        text-align left
+.-t_lowercase
+    -t_transform lowercase
 
-    .text-center
-        text-align center
+.-t_uppercase
+    -t_transform uppercase
 
-    .text-right
-        text-align right
-        
-    .text-justify
-        text-align justify
-
-    .text-nowrap
-        white-space nowrap
-
-    .m-top-0
-        margin-top 0
-
-    .m-right-0
-        margin-right 0
-
-    .m-bottom-0
-        margin-bottom 0
-
-    .m-left-0
-        margin-left 0
-
-    .text-large
-        font-size font-size-large
-        line-height font-size-large + 3
-
-    .text-huge
-        font-size font-size-huge
-        line-height font-size-huge + 3
-
-    .text-small
-        font-size font-size-small
-        line-height font-size-small + 3
-
-    .text-tiny
-        font-size font-size-tiny
-        line-height font-size-tiny + 3
-
-    .text-lowercase
-        text-transform lowercase
-
-    .text-uppercase
-        text-transform uppercase
-
-    .text-capitalize
-        text-transform capitalize
+.-t_capitalize
+    -t_transform capitalize
